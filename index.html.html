@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIGHT R1DER | Official Elite Streetwear</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #bb33ff; /* Neon Purple */
+            --secondary: #00f2ff; /* Neon Blue */
+            --bg: #050505;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--bg);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Interactive Background Blobs */
+        .background-blobs {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            filter: blur(60px);
+            background: #000;
+        }
+
+        .blob {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            opacity: 0.6;
+            transition: transform 0.15s ease-out;
+            pointer-events: none;
+        }
+
+        .blob-1 { background: var(--primary); top: 10%; left: 10%; }
+        .blob-2 { background: var(--secondary); top: 50%; left: 60%; }
+        .blob-3 { background: #ff0055; top: 40%; left: 20%; }
+
+        header {
+            padding: 40px 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 2px solid var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        /* SHINING NEON LOGO */
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 2.5rem;
+            letter-spacing: 12px;
+            color: #fff;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            animation: neon-pulse 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes neon-pulse {
+            from {
+                text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px var(--primary), 0 0 82px var(--primary);
+            }
+            to {
+                text-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 13px #fff, 0 0 32px var(--secondary), 0 0 62px var(--secondary);
+            }
+        }
+
+        .hero {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero p {
+            letter-spacing: 8px;
+            color: var(--secondary);
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 100px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background: rgba(15, 15, 15, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.4s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--secondary);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
+        }
+
+        .img-box {
+            height: 480px;
+            overflow: hidden;
+        }
+
+        .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.8s;
+        }
+
+        .content {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .content h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .order-btn {
+            display: inline-block;
+            border: 2px solid var(--primary);
+            color: #fff;
+            padding: 12px 35px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .order-btn:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 20px var(--primary);
+        }
+
+        /* CONTACT SECTION WITH PARALLAX LOGO BACKGROUND */
+        .cyber-contact {
+            padding: 120px 20px;
+            text-align: center;
+            position: relative;
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                              url('gemini_generated_image_s8fs9xs8fs9xs8fs (2).png'); /* Your Motorcycle Image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            border-top: 2px solid var(--primary);
+        }
+
+        .contact-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-card {
+            background: rgba(0, 0, 0, 0.9); 
+            border: 2px solid var(--primary);
+            padding: 40px 20px;
+            border-radius: 12px;
+            width: 280px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: 0 0 30px var(--secondary);
+        }
+
+        .social-card h4 { font-family: 'Orbitron'; color: #fff; margin: 0; }
+        .social-card p { color: var(--secondary); font-weight: bold; margin-top: 15px; }
+
+        footer {
+            padding: 60px;
+            text-align: center;
+            background: #000;
+            border-top: 1px solid #222;
+        }
+    </style>
+</head>
+<body>
+
+<div class="background-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+</div>
+
+<header>
+    <a href="#" class="logo">NIGHT R1DER</a>
+</header>
+
+<section class="hero">
+    <p>Premium Tech-Streetwear Drop</p>
+</section>
+
+<div class="container">
+    <div class="product-card">
+        <div class="img-box">
+            <img src="make_this_logo_on_the_back_of_the_tshirt_and_the_name_is_night_rider_ee3bfc09-5796-4099-9dcd-4b8a159cef7f.jpg" alt="Motorcycle Edition">
+        </div>
+        <div class="content">
+            <h3>PHANTOM RIDER V1</h3>
+            <a href="https://wa.me/213554386021" class="order-btn">ORDER NOW</a>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <div class="img-box">
+            <img src="t-shirt face neon.jpg" alt="Front Design">
+        </div>
+        <div class="content">
+            <h3>CORE FRONT</h3>
+            <a href="https://wa.me/213554386021" class="order-btn">ORDER NOW</a>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <div class="img-box">
+            <img src="t-shirt back neon.jpg" alt="Back Design">
+        </div>
+        <div class="content">
+            <h3>ELITE BACK</h3>
+            <a href="https://wa.me/213554386021" class="order-btn">ORDER NOW</a>
+        </div>
+    </div>
+</div>
+
+<section class="cyber-contact" id="contact">
+    <h2 style="font-family: 'Orbitron'; color: #fff; margin-bottom: 60px; text-shadow: 0 0 20px var(--primary);">CONNECT WITH R31</h2>
+    <div class="contact-container">
+        <a href="https://www.instagram.com/nightr1der31/" class="social-card" target="_blank">
+            <h4>INSTAGRAM</h4>
+            <p>@nightr1der31</p>
+        </a>
+        <a href="https://wa.me/213554386021" class="social-card" target="_blank">
+            <h4>WHATSAPP</h4>
+            <p>+213 554 38 60 21</p>
+        </a>
+        <a href="https://www.tiktok.com/@reyad31b" class="social-card" target="_blank">
+            <h4>TIKTOK</h4>
+            <p>@reyad31b</p>
+        </a>
+    </div>
+</section>
+
+<footer>
+    <p style="color: #444; letter-spacing: 5px;">&copy; 2026 NIGHT R1DER | AUTHENTIC STREETWEAR BY R31</p>
+</footer>
+
+<script>
+    const blobs = document.querySelectorAll('.blob');
+    document.addEventListener('mousemove', (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+        blobs.forEach((blob, index) => {
+            const speed = (index + 1) * 0.04; 
+            const moveX = (x - window.innerWidth / 2) * speed;
+            const moveY = (y - window.innerHeight / 2) * speed;
+            blob.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+    });
+</script>
+
+</body>
+</html>
