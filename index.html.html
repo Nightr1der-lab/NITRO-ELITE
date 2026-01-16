@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIGHT R1DER | Official Elite Streetwear</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #bb33ff;
+            --secondary: #00f2ff;
+            --bg: #050505;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--bg);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .background-blobs {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            filter: blur(60px);
+            background: #000;
+        }
+
+        .blob {
+            position: absolute;
+            width: 450px; height: 450px;
+            border-radius: 50%;
+            opacity: 0.6;
+            transition: transform 0.1s ease-out;
+            pointer-events: none;
+        }
+
+        .blob-1 { background: var(--primary); top: 10%; left: 10%; }
+        .blob-2 { background: var(--secondary); top: 50%; left: 60%; }
+
+        header {
+            padding: 40px 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 2px solid var(--primary);
+            position: sticky; top: 0; z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 2.8rem;
+            letter-spacing: 12px;
+            color: #fff;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            animation: neon-pulse 0.7s ease-in-out infinite alternate;
+        }
+
+        @keyframes neon-pulse {
+            from { text-shadow: 0 0 10px #fff, 0 0 20px var(--primary), 0 0 40px var(--primary); }
+            to { text-shadow: 0 0 5px #fff, 0 0 15px var(--secondary), 0 0 35px var(--secondary); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background: rgba(15, 15, 15, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.4s ease;
+            padding-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 0 30px var(--secondary);
+        }
+
+        .img-box { height: 450px; overflow: hidden; background: #000; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        .content { padding: 15px; text-align: center; }
+        .content h3 { font-family: 'Orbitron'; font-size: 1.2rem; margin: 10px 0; color: var(--secondary); }
+        
+        .order-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 0 20px;
+        }
+
+        select, input {
+            background: #111;
+            border: 1px solid var(--primary);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Rajdhani';
+            font-weight: bold;
+        }
+
+        .order-btn {
+            background: none;
+            border: 2px solid var(--primary);
+            color: #fff;
+            padding: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 5px;
+            font-family: 'Orbitron';
+            font-size: 0.9rem;
+        }
+
+        .order-btn:hover {
+            background: var(--primary);
+            color: black;
+            box-shadow: 0 0 20px var(--primary);
+        }
+
+        /* CONTACT SECTION */
+        .contact-section {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 2px solid var(--primary);
+        }
+
+        .contact-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 30px;
+            letter-spacing: 5px;
+            color: #fff;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-item {
+            background: #111;
+            border: 2px solid var(--primary);
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: 0.3s;
+            font-family: 'Orbitron';
+            letter-spacing: 2px;
+        }
+
+        .social-item:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 0 20px var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .tiktok:hover { background: #ff0050; }
+        .instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .whatsapp:hover { background: #25d366; }
+
+        footer { padding: 40px; text-align: center; background: #000; border-top: 1px solid #222; opacity: 0.6; }
+    </style>
+</head>
+<body>
+
+<div class="background-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+</div>
+
+<header><a href="#" class="logo">NIGHT R1DER</a></header>
+
+<div class="container">
+    <div class="product-card" id="p1">
+        <div class="img-box"><img src="make_this_logo_on_the_back_of_the_tshirt_and_the_name_is_night_rider_ee3bfc09-5796-4099-9dcd-4b8a159cef7f.jpg" alt="Phantom Rider V1"></div>
+        <div class="content"><h3>PHANTOM RIDER V1</h3></div>
+        <div class="order-form">
+            <select class="size">
+                <option value="S">Taille: S</option>
+                <option value="M">Taille: M</option>
+                <option value="L">Taille: L</option>
+                <option value="XL">Taille: XL</option>
+            </select>
+            <input type="text" class="city" placeholder="Your City / الولاية">
+            <input type="tel" class="phone" placeholder="Phone Number">
+            <button class="order-btn" onclick="sendOrder('PHANTOM RIDER V1', 'p1')">ORDER VIA WHATSAPP</button>
+        </div>
+    </div>
+
+    <div class="product-card" id="p2">
+        <div class="img-box"><img src="t-shirt face neon (2).jpg" alt="Core Front Design"></div>
+        <div class="content"><h3>CORE FRONT</h3></div>
+        <div class="order-form">
+            <select class="size">
+                <option value="S">Taille: S</option>
+                <option value="M">Taille: M</option>
+                <option value="L">Taille: L</option>
+                <option value="XL">Taille: XL</option>
+            </select>
+            <input type="text" class="city" placeholder="Your City / الولاية">
+            <input type="tel" class="phone" placeholder="Phone Number">
+            <button class="order-btn" onclick="sendOrder('CORE FRONT', 'p2')">ORDER VIA WHATSAPP</button>
+        </div>
+    </div>
+
+    <div class="product-card" id="p3">
+        <div class="img-box"><img src="t-shirt back neon (2).jpg" alt="Elite Back Design"></div>
+        <div class="content"><h3>ELITE BACK</h3></div>
+        <div class="order-form">
+            <select class="size">
+                <option value="S">Taille: S</option>
+                <option value="M">Taille: M</option>
+                <option value="L">Taille: L</option>
+                <option value="XL">Taille: XL</option>
+            </select>
+            <input type="text" class="city" placeholder="Your City / الولاية">
+            <input type="tel" class="phone" placeholder="Phone Number">
+            <button class="order-btn" onclick="sendOrder('ELITE BACK', 'p3')">ORDER VIA WHATSAPP</button>
+        </div>
+    </div>
+</div>
+
+<section class="contact-section">
+    <h2>STAY CONNECTED</h2>
+    <div class="social-links">
+        <a href="https://www.tiktok.com/@reyad31b" class="social-item tiktok" target="_blank">TIKTOK</a>
+        <a href="https://www.instagram.com/nightr1der31/" class="social-item instagram" target="_blank">INSTAGRAM</a>
+        <a href="https://wa.me/213554386021" class="social-item whatsapp" target="_blank">WHATSAPP</a>
+    </div>
+</section>
+
+<footer><p>&copy; 2026 NIGHT R1DER | BY R31</p></footer>
+
+<script>
+    function sendOrder(productName, cardId) {
+        const card = document.getElementById(cardId);
+        const size = card.querySelector('.size').value;
+        const city = card.querySelector('.city').value;
+        const phone = card.querySelector('.phone').value;
+
+        if(!city || !phone) {
+            alert("يرجى إدخال الولاية ورقم الهاتف لإتمام الطلب!");
+            return;
+        }
+
+        const message = `طلب جديد من الموقع:
+المنتج: ${productName}
+المقاس: ${size}
+الولاية: ${city}
+الهاتف: ${phone}`;
+
+        const encodedMessage = encodeURIComponent(message);
+        window.open(`https://wa.me/213554386021?text=${encodedMessage}`, '_blank');
+    }
+
+    // Animation Effect
+    const blobs = document.querySelectorAll('.blob');
+    document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX - window.innerWidth / 2) * 0.05;
+        const y = (e.clientY - window.innerHeight / 2) * 0.05;
+        blobs[0].style.transform = `translate(${x}px, ${y}px)`;
+        blobs[1].style.transform = `translate(${-x}px, ${-y}px)`;
+    });
+</script>
+
+</body>
+</html>
